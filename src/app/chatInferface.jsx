@@ -126,7 +126,7 @@ export default function ChatInterface() {
     return (
       <div className="min-h-dvh w-full bg-[#cad3d8] flex flex-col items-center justify-center p-4 relative">
         {/* Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8885_1px,transparent_1px),linear-gradient(to_bottom,#8885_1px,transparent_1px)] bg-[size:44px_44px]"
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8885_1px,transparent_1px),linear-gradient(to_bottom,#8885_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none"
           style={{
             maskImage: 'radial-gradient(circle at center, transparent 0%, black 100%)',
             WebkitMaskImage: 'radial-gradient(circle at center, transparent 0%, black 100%)',
@@ -224,7 +224,7 @@ export default function ChatInterface() {
     <div className="min-h-dvh w-full bg-[#cad3d8] flex flex-col relative">
       {/* Grid Background */}
       <div 
-        className="fixed inset-0 bg-[linear-gradient(to_right,#8885_1px,transparent_1px),linear-gradient(to_bottom,#8885_1px,transparent_1px)] bg-[size:44px_44px]"
+        className="fixed inset-0 bg-[linear-gradient(to_right,#8885_1px,transparent_1px),linear-gradient(to_bottom,#8885_1px,transparent_1px)] bg-[size:44px_44px] pointer-events-none"
         style={{
           maskImage: 'radial-gradient(circle at center, transparent 0%, black 100%)',
           WebkitMaskImage: 'radial-gradient(circle at center, transparent 0%, black 100%)',
@@ -296,17 +296,19 @@ export default function ChatInterface() {
             <div className="flex-1 bg-white/80 backdrop-blur-sm rounded-2xl">
               <textarea
                 value={input}
-                onChange={e => setInput(e.target.value)}
+                onChange={(e) => setInput(e.target.value)}
                 onKeyDown={onKeyDown}
                 placeholder="Ask a question..."
                 className="w-full resize-none bg-transparent px-4 py-3 text-gray-800 placeholder:text-gray-500 outline-none min-h-[44px] max-h-[160px]"
                 rows={1}
+                disabled={isLoading}
               />
             </div>
             <button
               onClick={sendMessage}
+              type="button"
               disabled={isLoading || !input.trim()}
-              className="p-3 rounded-xl bg-blue-500 text-white transition-all disabled:opacity-50 hover:bg-blue-600 active:scale-95"
+              className="p-3 rounded-xl bg-blue-500 text-white transition-all disabled:opacity-50 hover:bg-blue-600 active:scale-95 focus:outline-none"
             >
               <svg viewBox="0 0 24 24" className="size-6" fill="currentColor">
                 <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2 .01 7z" />
