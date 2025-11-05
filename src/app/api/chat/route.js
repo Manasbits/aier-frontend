@@ -13,8 +13,7 @@ export async function POST(request) {
   const { message, session_id, user_id } = payload || {};
   console.log('[api/chat] Incoming:', { message, session_id, user_id });
 
-  const url = `${BACKEND_URL}/runs?agent_id=${encodeURIComponent(AGENT_ID)}`;
-
+  const url = `${BACKEND_URL}/agents/${encodeURIComponent(AGENT_ID)}/runs`;
   const form = new FormData();
   form.append('message', message ?? '');
   form.append('stream', 'false'); // disable streaming
